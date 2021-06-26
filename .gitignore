@@ -1,0 +1,19 @@
+#IDE Settings
+.vscode
+.idea
+
+#Log files
+*.log
+
+#Text files
+*.txt
+
+#Distribution/Packaging
+venv
+.venv
+__pycache__/
+
+#output files
+output
+output/*
+
