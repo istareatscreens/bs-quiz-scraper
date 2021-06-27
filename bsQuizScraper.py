@@ -1,13 +1,13 @@
-from constants import LEFT_ALIGN, PADDING_X_LARGE, PADDING_Y_LARGE
 from tkinter import Tk, Button, Label, Entry, Frame
 from tkinter.constants import BOTH, DISABLED, NORMAL
 import threading
 import time
 
-from scraper import scrape
-from SettingsWidget import SettingsWidget
-from ScraperWidget import ScraperWidget
-from StatusWidget import StatusWidget
+from src.scraper.scraper import scrape
+from src.components.SettingsWidget import SettingsWidget
+from src.components.ScraperWidget import ScraperWidget
+from src.components.StatusWidget import StatusWidget
+from src.components.constants import LEFT_ALIGN, PADDING_X_LARGE, PADDING_Y_LARGE
 
 
 def run():
@@ -58,13 +58,11 @@ def run():
 
 
 def handleRunButton(scraperWidget: ScraperWidget, settingsWidget: SettingsWidget, statusWidget: StatusWidget, runButton):
-    runButton.state = NORMAL
-    time.sleep(1)  # Wait 2 seconds to prevent accidental double click
+    statusWidget.updateStatusReadout("Starting...")
     runButton.state = DISABLED
+    time.sleep(2)  # Wait 2 seconds to prevent accidental double click
+    runButton.state = NORMAL
     statusWidget.startLoading()
-    # scrape(*(scraperWidget.getSettings()),
-    #       *(settingsWidget.getAndSaveSettings()),
-    #       statusWidget.updateStatusReadout)
     thread = threading.Thread(target=executeScrape, args=[
         scraperWidget, settingsWidget, statusWidget])
     thread.start()

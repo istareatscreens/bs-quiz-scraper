@@ -4,12 +4,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from xpath_soup import xpath_soup
 from pathlib import Path
 import platform
 import time
-
 import traceback
+
+from .xpath_soup import xpath_soup
 
 # Set path seperator based on os
 SLASH = "\\" if platform.system() == 'Windows' else "/"
@@ -108,7 +108,6 @@ def __scrapeQuiz(driver, rootDir, fileExtension, printToWindow):
     # Wait for page to load
     WebDriverWait(driver, 1000)
     # get student name to make folder
-    printToWindow("Loading...")
     name = (__waitUntilLoad(
         '/html/body/div[2]/div/div[3]/div/div/div/form/div/table[2]/tbody/tr[1]/td', driver.find_element_by_xpath)).text.replace(':', '').replace('.', '')
     printToWindow("Scrape: " + name)

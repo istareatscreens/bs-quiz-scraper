@@ -1,8 +1,8 @@
 from tkinter import Tk, Button, Label, Entry, Frame, filedialog
 from tkinter.constants import LEFT, SUNKEN
 
-from constants import LEFT_ALIGN, PADDING_X_SMALL, PADDING_Y_SMALL, DEFAULT_ROW_WIDTH
-from CustomGridWidget import CustomGridWidget
+from .constants import LEFT_ALIGN, PADDING_X_SMALL, PADDING_Y_SMALL, DEFAULT_ROW_WIDTH
+from .CustomGridWidget import CustomGridWidget
 
 
 class ScraperWidget(CustomGridWidget):

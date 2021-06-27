@@ -1,7 +1,8 @@
 from tkinter import Tk, Button, Label, Entry, Frame, filedialog
-from Settings import Settings
-from constants import DEFAULT_ROW_WIDTH, PADDING_Y_SMALL, PADDING_X_SMALL, LEFT_ALIGN
-from CustomGridWidget import CustomGridWidget
+
+from .CustomGridWidget import CustomGridWidget
+from .Settings import Settings
+from .constants import DEFAULT_ROW_WIDTH, PADDING_Y_SMALL, PADDING_X_SMALL, LEFT_ALIGN
 
 
 class SettingsWidget(CustomGridWidget):
