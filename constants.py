@@ -1,4 +1,5 @@
 # Style properties
-LEFT_ALIGN = 'W'
+LEFT_ALIGN = 'w'
 PADDING_X_SMALL = 5
 PADDING_Y_SMALL = 5
+DEFAULT_ROW_WIDTH = 25
