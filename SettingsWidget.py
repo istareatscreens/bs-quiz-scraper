@@ -59,7 +59,7 @@ class SettingsWidget(CustomGridWidget):
         self.__fileExtensionEntry.insert(
             0, self.__settings.fileExtension)
 
-    def getSettingsWidget(self):
+    def getWidget(self):
         self.__settings.saveConfigFile()
         return self._frame
 

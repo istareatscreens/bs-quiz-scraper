@@ -1,35 +1,55 @@
+from constants import LEFT_ALIGN, PADDING_X_LARGE, PADDING_Y_LARGE
 from tkinter import Tk, Button, Label, Entry, Frame
-from tkinter.constants import BOTH
+from tkinter.constants import BOTH, COMMAND
 
 from Settings import Settings
 from SettingsWidget import SettingsWidget
 from ScraperWidget import ScraperWidget
+from StatusWidget import StatusWidget
 
 
 def run():
     window = Tk()  # instantiate window
+
+    # window styling/settings
+    window.title("bs-quiz-scraper")
     window.resizable(width=False, height=False)
 
-    # window styling
-    window.title("bs-quiz-scraper")
-    # Settings Pane
-    Label(window, text="Settings").pack(
-        padx=10)
+    # Settings Widget
+    Label(window, font='bold', anchor=LEFT_ALIGN, text="Settings").pack(
+        anchor=LEFT_ALIGN,
+        padx=PADDING_X_LARGE)
     settingsWidget = SettingsWidget(window)
-    settingsWidget.getSettingsWidget().pack(
+    settingsWidget.getWidget().pack(
         expand=True,
         fill=BOTH,
-        padx=10)
+        padx=PADDING_X_LARGE)
 
-    Label(window, text="Scraper Settings").pack(
-        expand=True,
-        fill=BOTH,
-        padx=10)
+    # Scraper Widget
+    Label(window, font='bold', text="Scraper Settings").pack(
+        anchor=LEFT_ALIGN,
+        padx=PADDING_X_LARGE)
     scraperWidget = ScraperWidget(window)
-    scraperWidget.getScraperWidget().pack(
+    scraperWidget.getWidget().pack(
         expand=True,
         fill=BOTH,
-        padx=10)
+        padx=PADDING_X_LARGE)
+
+    # Status Widget
+    Label(window).pack(
+        anchor=LEFT_ALIGN,
+        padx=PADDING_X_LARGE)
+    statusWidget = StatusWidget(window)
+    statusWidget.getWidget().pack(
+        expand=True,
+        fill=BOTH,
+        padx=PADDING_X_LARGE)
+
+    # Run Button
+    Button(window, text="Scrape", font='bold',
+           ).pack(
+        pady=PADDING_Y_LARGE,
+        expand=True)
 
     window.mainloop()  # render window
 

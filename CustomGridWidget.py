@@ -7,6 +7,10 @@ class CustomGridWidget:
         # Create Frame
         self._row = -1
         self._frame = Frame(window, bd=1, relief=SUNKEN)
+        self._window = window
+
+    def getWidget(self):
+        return self._frame
 
     def _incrementAndGetRow(self):
         self._row += 1
