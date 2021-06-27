@@ -23,17 +23,6 @@ class SettingsWidget(CustomGridWidget):
             row=self._row, column=1)
         self.__loginPageURLEntry.insert(0, self.__settings.loginPageURL)
 
-        # Login Asset Input
-        Label(self._frame, text="Login Asset URL:").grid(
-            pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
-            sticky=LEFT_ALIGN,
-            row=self._incrementAndGetRow(), column=0)
-        self.__loginAssetURLEntry = Entry(self._frame)
-        self.__loginAssetURLEntry.grid(
-            pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
-            row=self._row, column=1)
-        self.__loginAssetURLEntry.insert(0, self.__settings.loginAssetURL)
-
         # Browser Driver Input
         Button(self._frame, text="Get Browser Driver Executable",
                command=self.__getBrowserDriverExecutableFilePath
@@ -73,7 +62,6 @@ class SettingsWidget(CustomGridWidget):
     def __getSettingsFromEntries(self):
         self.__settings.browserDriverPath = self.__browserFilePathEntry.get()
         self.__settings.loginPageURL = self.__loginPageURLEntry.get()
-        self.__settings.loginAssetURL = self.__loginAssetURLEntry.get()
         self.__settings.fileExtension = self.__fileExtensionEntry.get()
 
     def __getBrowserDriverExecutableFilePath(self):

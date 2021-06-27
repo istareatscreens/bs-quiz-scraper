@@ -10,7 +10,6 @@ class Settings:
         dataset = self.__config.read(file)
         if len(dataset) == 0:
             self.loginPageURL = " "
-            self.loginAssetURL = " "
             self.browserDriverPath = " "
             self.fileExtension = " "
             self.saveConfigFile()
@@ -19,14 +18,12 @@ class Settings:
 
     def __readConfig(self):
         self.loginPageURL = self.__config['Settings']['loginPageURL']
-        self.loginAssetURL = self.__config['Settings']['loginAssetURL']
         self.browserDriverPath = self.__config['Settings']['browserDriverPath']
         self.fileExtension = self.__config['Settings']['fileExtension']
 
     def saveConfigFile(self):
         self.__config['Settings'] = {
             'loginPageURL': self.loginPageURL,
-            'loginAssetURL': self.loginAssetURL,
             'browserDriverPath': self.browserDriverPath,
             'fileExtension': self.fileExtension,
         }

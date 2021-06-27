@@ -1,4 +1,4 @@
-from tkinter import Tk, Button, Label, Entry, Frame
+from tkinter import PhotoImage, Tk, Button, Label, Entry, Frame
 from tkinter.constants import BOTH, DISABLED, NORMAL
 import threading
 import time
@@ -11,11 +11,16 @@ from src.components.constants import LEFT_ALIGN, PADDING_X_LARGE, PADDING_Y_LARG
 
 
 def run():
-    window = Tk()  # instantiate window
+    # instantiate window
+    window = Tk()
+
+    # Load Assets
+    icon = PhotoImage(file=r"assets/icon.png")
 
     # window styling/settings
     window.title("bs-quiz-scraper")
     window.resizable(width=False, height=False)
+    window.iconphoto(True, icon)
 
     # Settings Widget
     Label(window, font='bold', anchor=LEFT_ALIGN, text="Settings").pack(

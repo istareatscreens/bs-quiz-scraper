@@ -27,7 +27,7 @@ class StatusWidget():
     def finishLoading(self):
         self.__progressBar.stop()
         self.__progressBar.pack_forget()
-        self.__statusText.insert(END, "...COMPLETED!"+"\n\n")
+        self.__statusText.insert(END, "\n"+"...COMPLETED!"+"\n\n")
         self.__statusText.insert(END, self.__initialText+"\n")
         self.__statusText.see("end")
 

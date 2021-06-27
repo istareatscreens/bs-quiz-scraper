@@ -10,6 +10,7 @@ import time
 import traceback
 
 from .xpath_soup import xpath_soup
+from .constants import COMMON_STUDENT_QUIZ_ATTEMPT1_CLASS_NAME, STUDENT_ANSWER_CLASS_NAME, STUDENT_NAME_XPATH, SUCCESSFUL_LOGIN_ELEMENT_CLASS_NAME
 
 # Set path seperator based on os
 SLASH = "\\" if platform.system() == 'Windows' else "/"
@@ -39,7 +40,7 @@ def scrape(markingPageURL,
     printToWindow("Please login")
     wait = WebDriverWait(driver, 1000)
     element = wait.until(EC.element_to_be_clickable(
-        (By.CLASS_NAME, 'd2l-navigation-s-link')))
+        (By.CLASS_NAME, SUCCESSFUL_LOGIN_ELEMENT_CLASS_NAME)))
 
     # *** Start Scraping ***
 
@@ -54,9 +55,8 @@ def scrape(markingPageURL,
     # Get all exam links
     examSubmissions = []
     wait = WebDriverWait(driver, 1000)
-    # soup.find_all(class_="d2l-link d2l-link-inline"):
     printToWindow("Loading...")
-    for link in __waitUntilLoad("d2l-link d2l-link-inline", lambda element: soup.find_all(class_=element)):
+    for link in __waitUntilLoad(COMMON_STUDENT_QUIZ_ATTEMPT1_CLASS_NAME, lambda element: soup.find_all(class_=element)):
         if len(link.contents) > 0 and (link.contents[0]).find("attempt") != -1:
             examSubmissions.append(link)
 
@@ -109,12 +109,12 @@ def __scrapeQuiz(driver, rootDir, fileExtension, printToWindow):
     WebDriverWait(driver, 1000)
     # get student name to make folder
     name = (__waitUntilLoad(
-        '/html/body/div[2]/div/div[3]/div/div/div/form/div/table[2]/tbody/tr[1]/td', driver.find_element_by_xpath)).text.replace(':', '').replace('.', '')
+        STUDENT_NAME_XPATH, driver.find_element_by_xpath)).text.replace(':', '').replace('.', '')
     printToWindow("Scrape: " + name)
     print(name)
     workingPath = __makeDirectory(name, rootDir, printToWindow)
     Answers = __waitUntilLoad(
-        "drt d2l-htmlblock d2l-htmlblock-untrusted", lambda element: soup.findAll(class_=element))
+        STUDENT_ANSWER_CLASS_NAME, lambda element: soup.findAll(class_=element))
     questionNum = 1
     altTF = True
     for answer in Answers:
