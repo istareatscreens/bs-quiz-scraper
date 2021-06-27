@@ -57,6 +57,11 @@ class SettingsWidget:
         self.__settings.saveConfigFile()
         return self.__frame
 
+    def getAndSaveSettings(self):
+        # Save Settings
+        self.__settings.saveConfigFile()
+        return self.__settings
+
     # Internal functions
     def __incrementAndGetRow(self):
         self.__row += 1
