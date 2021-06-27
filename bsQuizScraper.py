@@ -1,5 +1,6 @@
 from tkinter import Tk, Button, Label, Entry, Frame
 
+from Settings import Settings
 from SettingsWidget import SettingsWidget
 
 
@@ -8,7 +9,7 @@ def run():
     # window styling
     window.title("bs-quiz-scraper")
     # Settings Pane
-    Label(window, text="Settings", ).pack(
+    Label(window, text="Settings").pack(
         padx=10,
         anchor="w")
     settingsWidget = SettingsWidget(window)

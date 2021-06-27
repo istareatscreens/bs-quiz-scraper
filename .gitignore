@@ -8,10 +8,13 @@
 #Text files
 *.txt
 
+#Setting files
+*.ini
+
 #Distribution/Packaging
 venv
 .venv
-__pycache__/
+__pycache__
 
 #output files
 output
