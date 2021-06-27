@@ -28,6 +28,7 @@ class SettingsWidget:
         self.__loginPageURLEntry.grid(
             pady=pady, padx=padx,
             row=self.__row, column=1)
+        self.__loginPageURLEntry.insert(0, self.__settings.loginPageURL)
 
         # Login Asset
         Label(self.__frame, text="Login Asset URL:").grid(
@@ -38,6 +39,7 @@ class SettingsWidget:
         self.__loginAssetURLEntry.grid(
             pady=pady, padx=padx,
             row=self.__row, column=1)
+        self.__loginAssetURLEntry.insert(0, self.__settings.loginAssetURL)
 
         # Browser Driver
         Button(self.__frame, text="Get Browser Driver Executable",
@@ -50,16 +52,16 @@ class SettingsWidget:
         self.__browserFilePathEntry.grid(
             pady=pady, padx=padx,
             row=self.__row, column=1)
-
-        self.__insertSettingsIntoEntries()
+        self.__browserFilePathEntry.insert(
+            0, self.__settings.browserDriverPath)
 
     def getSettingsWidget(self):
         self.__settings.saveConfigFile()
         return self.__frame
 
     def getAndSaveSettings(self):
-        # Save Settings
-        self.__settings.saveConfigFile()
+        self.__getSettingsFromEntries()  # Update settings object
+        self.__settings.saveConfigFile()  # Save Settings
         return self.__settings
 
     # Internal functions
@@ -67,13 +69,12 @@ class SettingsWidget:
         self.__row += 1
         return self.__row
 
+    def __getSettingsFromEntries(self):
+        self.__settings.browserDriverPath = self.__browserFilePathEntry.get()
+        self.__settings.loginPageURL = self.__loginPageURLEntry.get()
+        self.__settings.loginAssetURL = self.__loginAssetURLEntry.get()
+
     def __getBrowserDriverExecutableFilePath(self):
         self.__settings.BrowserDriverPath = filedialog.askopenfilename()
         self.__browserFilePathEntry.insert(
             0, self.__settings.browserDriverPath)
-
-    def __insertSettingsIntoEntries(self):
-        self.__browserFilePathEntry.insert(
-            0, self.__settings.browserDriverPath)
-        self.__loginAssetURLEntry.insert(0, self.__settings.loginAssetURL)
-        self.__loginPageURLEntry.insert(0, self.__settings.loginPageURL)
