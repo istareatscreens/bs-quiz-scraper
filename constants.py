@@ -1,0 +1,4 @@
+# Style properties
+LEFT_ALIGN = 'W'
+PADDING_X_SMALL = 5
+PADDING_Y_SMALL = 5

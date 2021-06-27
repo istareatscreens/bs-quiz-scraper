@@ -1,7 +1,7 @@
 from tkinter import Tk, Button, Label, Entry, Frame, filedialog
 from tkinter.constants import SUNKEN
 from Settings import Settings
-from tkinter.font import BOLD
+from constants import PADDING_Y_SMALL, PADDING_X_SMALL, LEFT_ALIGN
 
 
 class SettingsWidget:
@@ -10,34 +10,29 @@ class SettingsWidget:
         # Render Settings widget
         self.__settings = Settings()
 
-        # Style properties
-        anchor = 'W'
-        padx = 5
-        pady = 5
-
         # Create Frame
         self.__row = -1
         self.__frame = Frame(window, bd=1, relief=SUNKEN)
 
         # Login Page
         Label(self.__frame, text="Login Page URL:").grid(
-            sticky=anchor,
-            pady=pady, padx=padx,
+            sticky=LEFT_ALIGN,
+            pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
             row=self.__incrementAndGetRow(), column=0)
         self.__loginPageURLEntry = Entry(self.__frame)
         self.__loginPageURLEntry.grid(
-            pady=pady, padx=padx,
+            pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
             row=self.__row, column=1)
         self.__loginPageURLEntry.insert(0, self.__settings.loginPageURL)
 
         # Login Asset
         Label(self.__frame, text="Login Asset URL:").grid(
-            pady=pady, padx=padx,
-            sticky=anchor,
+            pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
+            sticky=LEFT_ALIGN,
             row=self.__incrementAndGetRow(), column=0)
         self.__loginAssetURLEntry = Entry(self.__frame)
         self.__loginAssetURLEntry.grid(
-            pady=pady, padx=padx,
+            pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
             row=self.__row, column=1)
         self.__loginAssetURLEntry.insert(0, self.__settings.loginAssetURL)
 
@@ -45,12 +40,12 @@ class SettingsWidget:
         Button(self.__frame, text="Get Browser Driver Executable",
                command=self.__getBrowserDriverExecutableFilePath
                ).grid(
-            pady=pady, padx=padx,
-            sticky=anchor,
+            pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
+            sticky=LEFT_ALIGN,
             row=self.__incrementAndGetRow(), column=0)
         self.__browserFilePathEntry = Entry(self.__frame)
         self.__browserFilePathEntry.grid(
-            pady=pady, padx=padx,
+            pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
             row=self.__row, column=1)
         self.__browserFilePathEntry.insert(
             0, self.__settings.browserDriverPath)

@@ -17,7 +17,6 @@ class Settings:
             self.__readConfig()
 
     def __readConfig(self):
-        print(self.__config['Settings'])
         self.loginPageURL = self.__config['Settings']['loginPageURL']
         self.loginAssetURL = self.__config['Settings']['loginAssetURL']
         self.browserDriverPath = self.__config['Settings']['browserDriverPath']
