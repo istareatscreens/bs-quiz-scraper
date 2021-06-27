@@ -66,7 +66,7 @@ class SettingsWidget(CustomGridWidget):
     def getAndSaveSettings(self):
         self.__getSettingsFromEntries()  # Update settings object
         self.__settings.saveConfigFile()  # Save Settings
-        return self.__settings
+        return self.__settings.loginPageURL, self.__settings.browserDriverPath, self.__settings.fileExtension
 
     # Internal functions
     def __getSettingsFromEntries(self):
@@ -76,6 +76,7 @@ class SettingsWidget(CustomGridWidget):
         self.__settings.fileExtension = self.__fileExtensionEntry.get()
 
     def __getBrowserDriverExecutableFilePath(self):
-        self.__settings.BrowserDriverPath = filedialog.askopenfilename()
+        self.__settings.browserDriverPath = filedialog.askopenfilename()
+        self.__browserFilePathEntry.delete(0, 'end')
         self.__browserFilePathEntry.insert(
             0, self.__settings.browserDriverPath)

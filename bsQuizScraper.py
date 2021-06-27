@@ -2,7 +2,7 @@ from constants import LEFT_ALIGN, PADDING_X_LARGE, PADDING_Y_LARGE
 from tkinter import Tk, Button, Label, Entry, Frame
 from tkinter.constants import BOTH, COMMAND
 
-from Settings import Settings
+from scraper import scrape
 from SettingsWidget import SettingsWidget
 from ScraperWidget import ScraperWidget
 from StatusWidget import StatusWidget
@@ -47,6 +47,9 @@ def run():
 
     # Run Button
     Button(window, text="Scrape", font='bold',
+           command=lambda: scrape(*(scraperWidget.getSettings()),
+                                  *(settingsWidget.getAndSaveSettings()),
+                                  statusWidget.updateStatusReadout)
            ).pack(
         pady=PADDING_Y_LARGE,
         expand=True)

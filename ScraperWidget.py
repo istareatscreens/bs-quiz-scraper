@@ -8,7 +8,6 @@ from CustomGridWidget import CustomGridWidget
 class ScraperWidget(CustomGridWidget):
     def __init__(self, window) -> None:
         super().__init__(window)
-        self.folderPath = ""
 
         # Marking Page URL Input
         Label(self._frame, anchor=LEFT_ALIGN, text="Marking Page URL:", width=DEFAULT_ROW_WIDTH).grid(
@@ -32,8 +31,12 @@ class ScraperWidget(CustomGridWidget):
             pady=PADDING_Y_SMALL, padx=PADDING_X_SMALL,
             row=self._row, column=1)
 
+    def getSettings(self):
+        return self.__markingPageURLEntry.get(), self.__outputDirectoryEntry.get()
+
     # internal functions
     def __getOutputPath(self):
-        self.folderPath = filedialog.askdirectory()
-        self.__browserFilePathEntry.insert(
-            0, self.folderPath)
+        self.__folderPath = filedialog.askdirectory()
+        self.__outputDirectoryEntry.delete(0, 'end')
+        self.__outputDirectoryEntry.insert(
+            0, self.__folderPath)
