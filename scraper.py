@@ -7,6 +7,7 @@ from selenium import webdriver
 from xpath_soup import xpath_soup
 from pathlib import Path
 import platform
+import time
 
 import traceback
 
@@ -88,6 +89,7 @@ def __waitUntilLoad(element, callback):
                 continue
             return result
         except:
+            time.sleep(0.05)
             continue
 
 
