@@ -5,9 +5,6 @@
 #Log files
 *.log
 
-#Text files
-*.txt
-
 #Setting files
 *.ini
 
