@@ -104,9 +104,11 @@ def __makeDirectory(path, rootDir, printToWindow):
 
 
 def __scrapeQuiz(driver, rootDir, fileExtension, printToWindow):
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
     # Wait for page to load
-    WebDriverWait(driver, 1000)
+    WebDriverWait(driver, 1000).until(
+        lambda d: d.execute_script("return document.readyState") == "complete")
+
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
     # get student name to make folder
     name = (__waitUntilLoad(
         STUDENT_NAME_XPATH, driver.find_element_by_xpath)).text.replace(':', '').replace('.', '')
