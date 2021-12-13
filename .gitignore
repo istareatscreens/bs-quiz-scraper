@@ -17,3 +17,7 @@ __pycache__
 output
 output/*
 
+#Build
+build
+dist
+

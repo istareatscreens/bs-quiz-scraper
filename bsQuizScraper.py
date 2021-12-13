@@ -15,12 +15,12 @@ def run():
     window = Tk()
 
     # Load Assets
-    icon = PhotoImage(file=r"assets/icon.png")
+    # icon = PhotoImage(file=r"icon.ico")
 
     # window styling/settings
     window.title("bs-quiz-scraper")
     window.resizable(width=False, height=False)
-    window.iconphoto(True, icon)
+    # window.iconphoto(True, icon)
 
     # Settings Widget
     Label(window, font='bold', anchor=LEFT_ALIGN, text="Settings").pack(
